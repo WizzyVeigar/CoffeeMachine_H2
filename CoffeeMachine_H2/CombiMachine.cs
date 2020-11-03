@@ -12,6 +12,10 @@ namespace CoffeeMachine_H2
         {
         }
 
+        //! I was thinking about if I should inherit them down machine > coffee > combi > allinone
+        //! god damn it
+        //! Should I make them inherit downwards?
+
         public float BeanAmountMax
         {
             get

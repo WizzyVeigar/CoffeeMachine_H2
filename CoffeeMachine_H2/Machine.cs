@@ -22,5 +22,10 @@ namespace CoffeeMachine_H2
         {
             Name = name;
         }
+
+        protected virtual bool IsAmountTooBig(float amount, float capacity)
+        { 
+            return amount > capacity ? true : false;
+        }
     }
 }

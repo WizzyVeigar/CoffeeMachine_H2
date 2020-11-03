@@ -8,6 +8,7 @@ namespace CoffeeMachine_H2
 {
     class AllInOneMachine : Machine, IBrewCocoa, IBrewCoffee, IBrewTea
     {
+
         public AllInOneMachine(string name) : base(name)
         {
         }

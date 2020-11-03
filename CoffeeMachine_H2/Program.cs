@@ -10,6 +10,12 @@ namespace CoffeeMachine_H2
     {
         static void Main(string[] args)
         {
+            CoffeeBean bean = new CoffeeBean("name", Flavor.Cool);
+
+            Console.WriteLine(bean.Flavor);
+            Console.WriteLine(bean.IngredientName);
+
+            Console.ReadKey();
         }
     }
 }

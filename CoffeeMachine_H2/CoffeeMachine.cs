@@ -20,19 +20,9 @@ namespace CoffeeMachine_H2
         public float BeanAmountCurrent
         {
             get { return beanAmountCurrent; }
-            private set
-            {
-                if (beanAmountCurrent + value > BeanAmountMax)
-                {
-                    beanAmountCurrent = BeanAmountMax;
-                    //Maybe log you filled too much
-                }
-                else
-                {
-                    beanAmountCurrent = value;
-                }
-            }
+            private set { beanAmountCurrent = value; }
         }
+
 
         private float waterAmountMax;
         public float WaterAmountMax
@@ -46,22 +36,8 @@ namespace CoffeeMachine_H2
         public float WaterAmountCurrent
         {
             get { return waterAmountCurrent; }
-            private set
-            {
-                if (waterAmountCurrent + value > WaterAmountMax)
-                {
-                    waterAmountCurrent = WaterAmountMax;
-                    //Maybe log you filled too much
-                }
-                else
-                {
-                    waterAmountCurrent = value;
-                }
-            }
+            private set { waterAmountCurrent = value; }
         }
-
-
-
 
         public CoffeeMachine(string name, float maxBeanCapacity) : base(name)
         {

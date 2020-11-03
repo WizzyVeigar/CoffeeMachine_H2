@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine_H2
 {
-    interface IBrewHotWater
+    class CoffeeBean : Ingredient
     {
-        float WaterAmountCurrent { get; }
-        float WaterAmountMax { get; }
-
-        //string BrewHotWater();
+        public CoffeeBean(Flavor flavor) : base(flavor)
+        {
+            IngredientName = "CoffeeBean";
+        }
     }
 }
