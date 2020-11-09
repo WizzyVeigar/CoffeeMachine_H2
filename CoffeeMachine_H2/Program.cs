@@ -10,11 +10,16 @@ namespace CoffeeMachine_H2
     {
         static void Main(string[] args)
         {
-            CoffeeMachine coffee = new CoffeeMachine("PhillipsHueRGBLaserPointer365.X", 50,100);
-            Console.WriteLine(coffee.ChangePower());
-            Console.WriteLine(coffee.AddWater(60));
-            Console.WriteLine(coffee.AddCoffeeIngredient(50));
-            Console.WriteLine(coffee.BrewCoffee(5));
+            AllInOneMachine aioMachine = new AllInOneMachine("PhillipsHueRGBLaserPointer365.X", 150,200, 150);
+            Console.WriteLine(aioMachine.ChangePower());
+            Console.WriteLine(aioMachine.AddWater(200));
+            Console.WriteLine(aioMachine.AddCoffeeIngredient(100));
+            Console.WriteLine(aioMachine.AddCocoaPowder(50));
+            
+            Console.WriteLine(aioMachine.BrewCoffee(5));
+            Console.WriteLine(aioMachine.BrewTea(5));
+            Console.WriteLine(aioMachine.BrewCocoa(5));
+            Console.WriteLine(aioMachine.ToString());
             Console.ReadKey();
         }
     }

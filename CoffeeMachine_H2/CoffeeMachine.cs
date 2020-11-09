@@ -40,15 +40,12 @@ namespace CoffeeMachine_H2
             protected set { waterAmountCurrent = value; }
         }
 
-        public CoffeeMachine(string name, float maxBeanCapacity) : base(name)
+        public CoffeeMachine(string name, float maxBeanCapacity, float maxWaterCapacity) : base(name)
         {
             BeanAmountMax = maxBeanCapacity;
-        }
-
-        public CoffeeMachine(string name, float maxBeanCapacity, float maxWaterCapacity) : this(name, maxBeanCapacity)
-        {
             WaterAmountMax = maxWaterCapacity;
         }
+
 
         public string BrewCoffee(int cupsToMake)
         {
@@ -56,9 +53,9 @@ namespace CoffeeMachine_H2
             {
                 for (int i = 0; i < cupsToMake; i++)
                 {
-                    if (IsAmountTooBig((cupsToMake * 5),BeanAmountCurrent) || IsAmountTooBig(cupsToMake * 10, WaterAmountCurrent))
+                    if (IsAmountTooBig(5, BeanAmountCurrent) || IsAmountTooBig(10, WaterAmountCurrent))
                     {
-                        return "Because of missing water/coffee, we made only " + i +" cup/s of coffee";
+                        return "Because of missing water/coffee, we made only " + i + " cup/s of coffee";
                     }
                     BeanAmountCurrent -= 5;
                     WaterAmountCurrent -= 10;

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine_H2
 {
-    class AllInOneMachine : Machine, IBrewCocoa, IBrewCoffee, IBrewTea
+    //This machine simply put, does it all.
+    class AllInOneMachine : CombiMachine, IBrewCocoa, IBrewCoffee, IBrewTea
     {
-
-        public AllInOneMachine(string name) : base(name)
+        public AllInOneMachine(string name, float maxBeanCapacity, float maxWaterCapacity, float cocoaMaxCapacity) : base(name, maxBeanCapacity, maxWaterCapacity)
         {
+            CocoaPowderAmountMax = cocoaMaxCapacity;
         }
-
         private float cocoaPowderAmountMax;
         public float CocoaPowderAmountMax
         {
@@ -26,69 +26,53 @@ namespace CoffeeMachine_H2
             }
         }
 
+        private float cocoaPowderAmountCurrent;
         public float CocoaPowderAmountCurrent
         {
             get
             {
-                throw new NotImplementedException();
+                return cocoaPowderAmountCurrent;
             }
-        }
-
-        public float WaterAmountCurrent
-        {
-            get
+            protected set
             {
-                throw new NotImplementedException();
+                cocoaPowderAmountCurrent = value;
             }
-        }
-
-        public float WaterAmountMax
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public float BeanAmountMax
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public float BeanAmountCurrent
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string BrewCoffee(int cupsToMake)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string BrewTea(int cupsToMake)
-        {
-            throw new NotImplementedException();
         }
 
         public string BrewCocoa(int cupsToMake)
         {
-            throw new NotImplementedException();
+            if (IsOn)
+            {
+                for (int i = 0; i < cupsToMake; i++)
+                {
+                    if (IsAmountTooBig(10, cocoaPowderAmountCurrent) || IsAmountTooBig(5, CocoaPowderAmountMax))
+                    {
+                        return "Because of missing water/cocoa, we made only " + i + " cup/s of cocoa";
+                    }
+                    cocoaPowderAmountCurrent -= 10;
+                    CocoaPowderAmountMax -= 5;
+                }
+                return "Made " + cupsToMake + " cups of cocoa";
+            }
+            return "The machine is not turned on";
         }
 
-        public string AddWater(float amountToAdd)
+        public string AddCocoaPowder(float amountToAdd)
         {
-            throw new NotImplementedException();
+            if (!IsAmountTooBig(amountToAdd + CocoaPowderAmountCurrent, BeanAmountMax))
+            {
+                CocoaPowderAmountCurrent += amountToAdd;
+                return "Added " + amountToAdd + " grams of powder to the machine";
+            }
+            CocoaPowderAmountCurrent = CocoaPowderAmountMax;
+            return "You tried adding too much cocoa, it has instead been fully filled";
         }
 
-        public string AddCoffeeIngredient(float coffeeIngredient)
+        public override string ToString()
         {
-            throw new NotImplementedException();
+            return "Current Water: " + WaterAmountCurrent + "\n" +
+                "Current Coffee: " + BeanAmountCurrent + "\n" +
+                "Current Cocoa:" + CocoaPowderAmountCurrent;
         }
     }
 }
