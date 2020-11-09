@@ -46,17 +46,28 @@ namespace CoffeeMachine_H2
 
         public CoffeeMachine(string name, float maxBeanCapacity, float maxWaterCapacity) : this(name, maxBeanCapacity)
         {
-            WaterAmountMax = maxBeanCapacity;
+            WaterAmountMax = maxWaterCapacity;
         }
 
         public override void TurnOn()
         {
-            throw new NotImplementedException();
+            //Power on or off
         }
 
         public string BrewCoffee(int cupsToMake)
         {
-            throw new NotImplementedException();
+            return "Brewed X amount of coffee"; 
+        }
+
+        public string AddCoffeeIngredient(float coffeeIngredient)
+        {
+            return "Added" + coffeeIngredient + "grams of beans to the machine";
+        }
+
+        public string AddWater(float amountToAdd)
+        {
+            WaterAmountCurrent += amountToAdd;
+            return ""
         }
     }
 }

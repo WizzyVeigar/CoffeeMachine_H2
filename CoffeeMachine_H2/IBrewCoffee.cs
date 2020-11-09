@@ -12,5 +12,6 @@ namespace CoffeeMachine_H2
         float BeanAmountCurrent { get; }
 
         string BrewCoffee(int cupsToMake);
+        string AddCoffeeIngredient(float coffeeIngredient);
     }
 }

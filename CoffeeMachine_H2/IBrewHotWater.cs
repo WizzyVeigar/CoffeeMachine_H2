@@ -10,7 +10,6 @@ namespace CoffeeMachine_H2
     {
         float WaterAmountCurrent { get; }
         float WaterAmountMax { get; }
-
-        //string BrewHotWater();
+        string AddWater(float amountToAdd);
     }
 }

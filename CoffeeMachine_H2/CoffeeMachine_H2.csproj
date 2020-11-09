@@ -46,14 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllInOneMachine.cs" />
-    <Compile Include="CoffeeBean.cs" />
     <Compile Include="CoffeeMachine.cs" />
     <Compile Include="CombiMachine.cs" />
     <Compile Include="IBrewCocoa.cs" />
     <Compile Include="IBrewCoffee.cs" />
     <Compile Include="IBrewHotWater.cs" />
     <Compile Include="IBrewTea.cs" />
-    <Compile Include="Ingredient.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
