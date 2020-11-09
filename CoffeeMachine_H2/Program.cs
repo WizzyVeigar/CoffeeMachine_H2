@@ -10,7 +10,7 @@ namespace CoffeeMachine_H2
     {
         static void Main(string[] args)
         {
-            AllInOneMachine aioMachine = new AllInOneMachine("PhillipsHueRGBLaserPointer365.X", 150,200, 150);
+            AllInOneMachine aioMachine = new AllInOneMachine("PhillipsHueRGBLaserPointer365.X Version 2.1 PRO", 150,200, 150);
             Console.WriteLine(aioMachine.ChangePower());
             Console.WriteLine(aioMachine.AddWater(200));
             Console.WriteLine(aioMachine.AddCoffeeIngredient(100));
