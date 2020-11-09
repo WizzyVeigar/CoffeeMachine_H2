@@ -6,66 +6,38 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine_H2
 {
-    class CombiMachine : Machine, IBrewCoffee, IBrewTea
+    //This class makes Coffee and Tea, representing a CombiMachine
+    class CombiMachine : CoffeeMachine, IBrewCoffee, IBrewTea
     {
-        public CombiMachine(string name) : base(name)
+        public CombiMachine(string name, float maxBeanCapacity) : base(name, maxBeanCapacity)
         {
         }
 
-        //! I was thinking about if I should inherit them down machine > coffee > combi > allinone
-        //! god damn it
-        //! Should I make them inherit downwards?
-
-        public float BeanAmountMax
+        public CombiMachine(string name, float maxBeanCapacity, float maxWaterCapacity) : base(name, maxBeanCapacity, maxWaterCapacity)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
         }
 
-        public float BeanAmountCurrent
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public float WaterAmountCurrent
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public float WaterAmountMax
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public string AddCoffeeIngredient(float coffeeIngredient)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string AddWater(float amountToAdd)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string BrewCoffee(int cupsToMake)
-        {
-            throw new NotImplementedException();
-        }
-
+        //Normally you can't make coffeebeans to tea, but in my machine you can.
         public string BrewTea(int cupsToMake)
         {
-            throw new NotImplementedException();
+            if (IsOn)
+            {
+                for (int i = 0; i < cupsToMake; i++)
+                {                    
+                    if (IsAmountTooBig((cupsToMake * 5), BeanAmountCurrent) || IsAmountTooBig(cupsToMake * 10, WaterAmountCurrent))
+                    {
+                        return "Because of missing water/coffee, we made only " + i + " cup/s of coffee";
+                    }
+                    BeanAmountCurrent -= 5;
+                    WaterAmountCurrent -= 10;
+                }
+                return "Made " + cupsToMake + " cups of coffee";
+            }
+
+            return "The machine is not turned on";
         }
+
+
+
     }
 }

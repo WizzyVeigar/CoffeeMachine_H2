@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine_H2
 {
+    //This is the default layout of a machine
     abstract class Machine
     {
         private string name;

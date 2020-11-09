@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoffeeMachine_H2
 {
+    //This class represents a CoffeeMachine
     class CoffeeMachine : Machine, IBrewCoffee
     {
         private float beanAmountMax;
@@ -20,7 +21,7 @@ namespace CoffeeMachine_H2
         public float BeanAmountCurrent
         {
             get { return beanAmountCurrent; }
-            private set { beanAmountCurrent = value; }
+            protected set { beanAmountCurrent = value; }
         }
 
 
@@ -36,7 +37,7 @@ namespace CoffeeMachine_H2
         public float WaterAmountCurrent
         {
             get { return waterAmountCurrent; }
-            private set { waterAmountCurrent = value; }
+            protected set { waterAmountCurrent = value; }
         }
 
         public CoffeeMachine(string name, float maxBeanCapacity) : base(name)
@@ -58,7 +59,9 @@ namespace CoffeeMachine_H2
                     if (IsAmountTooBig((cupsToMake * 5),BeanAmountCurrent) || IsAmountTooBig(cupsToMake * 10, WaterAmountCurrent))
                     {
                         return "Because of missing water/coffee, we made only " + i +" cup/s of coffee";
-                    } 
+                    }
+                    BeanAmountCurrent -= 5;
+                    WaterAmountCurrent -= 10;
                 }
                 return "Made " + cupsToMake + " cups of coffee";
             }
