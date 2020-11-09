@@ -22,7 +22,7 @@ namespace CoffeeMachine_H2
         public bool IsOn
         {
             get { return isOn; }
-            set { isOn = value; }
+            private set { isOn = value; }
         }
 
 

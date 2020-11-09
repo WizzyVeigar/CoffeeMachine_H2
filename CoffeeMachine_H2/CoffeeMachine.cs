@@ -46,7 +46,6 @@ namespace CoffeeMachine_H2
             WaterAmountMax = maxWaterCapacity;
         }
 
-
         public string BrewCoffee(int cupsToMake)
         {
             if (IsOn)

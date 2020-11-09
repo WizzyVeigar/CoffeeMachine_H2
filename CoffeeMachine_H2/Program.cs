@@ -18,7 +18,7 @@ namespace CoffeeMachine_H2
             
             Console.WriteLine(aioMachine.BrewCoffee(5));
             Console.WriteLine(aioMachine.BrewTea(5));
-            Console.WriteLine(aioMachine.BrewCocoa(5));
+            Console.WriteLine(aioMachine.BrewCocoa());
             Console.WriteLine(aioMachine.ToString());
             Console.ReadKey();
         }
