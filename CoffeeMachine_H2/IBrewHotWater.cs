@@ -10,6 +10,11 @@ namespace CoffeeMachine_H2
     {
         float WaterAmountCurrent { get; }
         float WaterAmountMax { get; }
+        /// <summary>
+        /// Adds <paramref name="amountToAdd"/> of units to <see cref="WaterAmountCurrent"/>
+        /// </summary>
+        /// <param name="amountToAdd"></param>
+        /// <returns>Returns a string of the end result</returns>
         string AddWater(float amountToAdd);
     }
 }

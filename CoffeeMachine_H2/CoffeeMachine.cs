@@ -49,25 +49,44 @@ namespace CoffeeMachine_H2
             WaterAmountMax = maxWaterCapacity;
         }
 
-        public override void TurnOn()
-        {
-            //Power on or off
-        }
-
         public string BrewCoffee(int cupsToMake)
         {
-            return "Brewed X amount of coffee"; 
+            if (IsOn)
+            {
+                if (!IsAmountTooBig((cupsToMake * 5), BeanAmountCurrent))
+                {
+                    for (int i = 0; i < cupsToMake; i++)
+                    {
+                        BeanAmountCurrent -= cupsToMake * 5;
+                    }
+                    return "Brewed " + cupsToMake + " amount of coffee";
+                }
+                return "There is not enough coffee to make " + cupsToMake + " cup/s of coffee";
+            }
+
+            return "The machine is not turned on";
         }
 
         public string AddCoffeeIngredient(float coffeeIngredient)
         {
-            return "Added" + coffeeIngredient + "grams of beans to the machine";
+            if (!IsAmountTooBig(coffeeIngredient + BeanAmountCurrent, BeanAmountMax))
+            {
+                BeanAmountCurrent += coffeeIngredient;
+                return "Added " + coffeeIngredient + " grams of beans to the machine";
+            }
+            return "You tried adding too much coffee";
         }
 
         public string AddWater(float amountToAdd)
         {
-            WaterAmountCurrent += amountToAdd;
-            return ""
+            //Checks if the water amount you want to add + current amount is bigger than the capacity
+            if (!IsAmountTooBig(amountToAdd + WaterAmountCurrent, WaterAmountMax))
+            {
+                WaterAmountCurrent += amountToAdd;
+                return "Added " + amountToAdd + " units of water";
+            }
+            WaterAmountCurrent = WaterAmountMax;
+            return "You tried adding too much water, it has instead fully been filled";
         }
     }
 }

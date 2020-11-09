@@ -48,17 +48,22 @@ namespace CoffeeMachine_H2
             }
         }
 
+        public string AddCoffeeIngredient(float coffeeIngredient)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string AddWater(float amountToAdd)
+        {
+            throw new NotImplementedException();
+        }
+
         public string BrewCoffee(int cupsToMake)
         {
             throw new NotImplementedException();
         }
 
         public string BrewTea(int cupsToMake)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void TurnOn()
         {
             throw new NotImplementedException();
         }
