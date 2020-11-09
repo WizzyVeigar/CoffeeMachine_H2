@@ -53,15 +53,14 @@ namespace CoffeeMachine_H2
         {
             if (IsOn)
             {
-                if (!IsAmountTooBig((cupsToMake * 5), BeanAmountCurrent))
+                for (int i = 0; i < cupsToMake; i++)
                 {
-                    for (int i = 0; i < cupsToMake; i++)
+                    if (IsAmountTooBig((cupsToMake * 5),BeanAmountCurrent) || IsAmountTooBig(cupsToMake * 10, WaterAmountCurrent))
                     {
-                        BeanAmountCurrent -= cupsToMake * 5;
-                    }
-                    return "Brewed " + cupsToMake + " amount of coffee";
+                        return "Because of missing water/coffee, we made only " + i +" cup/s of coffee";
+                    } 
                 }
-                return "There is not enough coffee to make " + cupsToMake + " cup/s of coffee";
+                return "Made " + cupsToMake + " cups of coffee";
             }
 
             return "The machine is not turned on";
@@ -69,12 +68,14 @@ namespace CoffeeMachine_H2
 
         public string AddCoffeeIngredient(float coffeeIngredient)
         {
+            //Checks if the coffee amount you want to add + current amount is bigger than the capacity
             if (!IsAmountTooBig(coffeeIngredient + BeanAmountCurrent, BeanAmountMax))
             {
                 BeanAmountCurrent += coffeeIngredient;
                 return "Added " + coffeeIngredient + " grams of beans to the machine";
             }
-            return "You tried adding too much coffee";
+            BeanAmountCurrent = beanAmountMax;
+            return "You tried adding too much coffee, it has instead been fully filled";
         }
 
         public string AddWater(float amountToAdd)
