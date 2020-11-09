@@ -39,20 +39,17 @@ namespace CoffeeMachine_H2
             }
         }
 
-        public string BrewCocoa(int cupsToMake)
+        public string BrewCocoa()
         {
             if (IsOn)
             {
-                for (int i = 0; i < cupsToMake; i++)
+                if (!IsAmountTooBig(50, CocoaPowderAmountCurrent) || IsAmountTooBig(20, WaterAmountCurrent))
                 {
-                    if (IsAmountTooBig(10, cocoaPowderAmountCurrent) || IsAmountTooBig(5, CocoaPowderAmountMax))
-                    {
-                        return "Because of missing water/cocoa, we made only " + i + " cup/s of cocoa";
-                    }
-                    cocoaPowderAmountCurrent -= 10;
-                    CocoaPowderAmountMax -= 5;
+                    CocoaPowderAmountCurrent -= 50;
+                    WaterAmountCurrent -= 20;
+                    return "Made a single cup of cocoa";
                 }
-                return "Made " + cupsToMake + " cups of cocoa";
+                return "There was not enough powder/Water in the machine";
             }
             return "The machine is not turned on";
         }

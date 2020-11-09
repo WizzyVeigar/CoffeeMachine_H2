@@ -15,9 +15,9 @@ namespace CoffeeMachine_H2
         /// </summary>
         /// <param name="cupsToMake"></param>
         /// <returns>Returns a string with the end result</returns>
-        string BrewCocoa(int cupsToMake);
+        string BrewCocoa();
         /// <summary>
-        /// tries to add the <paramref name="amountToAdd"/> to the <see cref="CocoaPowderAmountCurrent"/>
+        /// Makes a single cup of cocoa
         /// </summary>
         /// <param name="amountToAdd"></param>
         /// <returns>Returns a string with the end result</returns>
